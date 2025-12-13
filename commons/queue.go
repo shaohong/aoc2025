@@ -1,6 +1,6 @@
 package queue
 
-type Queue[T any] struct {
+type Queue[T comparable] struct {
 	data []T
 }
 
@@ -16,6 +16,16 @@ func (q *Queue[T]) Dequeue() (T, bool) {
 	v := q.data[0]
 	q.data = q.data[1:]
 	return v, true
+}
+
+// check if the queue contains the given value
+func (q *Queue[T]) Contains(v T) bool {
+	for _, item := range q.data {
+		if item == v {
+			return true
+		}
+	}
+	return false
 }
 
 func (q *Queue[T]) Len() int { return len(q.data) }
