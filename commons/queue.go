@@ -1,4 +1,4 @@
-package queue
+package commons
 
 type Queue[T comparable] struct {
 	data []T
