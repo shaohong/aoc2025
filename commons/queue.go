@@ -29,3 +29,12 @@ func (q *Queue[T]) Contains(v T) bool {
 }
 
 func (q *Queue[T]) Len() int { return len(q.data) }
+
+// a way to visit each element in the queue
+func (q *Queue[T]) At(i int) (T, bool) {
+	if i < 0 || i >= len(q.data) {
+		var zero T
+		return zero, false
+	}
+	return q.data[i], true
+}
